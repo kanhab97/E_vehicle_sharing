@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Employee Data</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.min.css' %}">
+    <style>
+      .navbar {
+          border-radius: 0;
+          }
+          :root {
+            --primary: #5CC0FF;
+            --light: #F5F8FA;
+            --dark: #14161D;
+        }
+
+        /*** Layout ***/
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 250px;
+            height: 100vh;
+            overflow-y: auto;
+            background: var(--light);
+            z-index: 999;
+            transition: 0.5s;
+            box-shadow: 0 0 25px 0 black;
+        }
+
+        .content {
+            margin-left: 250px;
+            min-height: 100vh;
+            background: #FFFFFF;
+        }
+
+        @media (min-width: 992px) {
+            .sidebar {
+                margin-left: 0;
+            }
+
+            .sidebar.open {
+                margin-left: -250px;
+            }
+
+            .content {
+                width: calc(100% - 250px);
+            }
+
+            .content.open {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .sidebar {
+                margin-left: -250px;
+            }
+
+            .sidebar.open {
+                margin-left: 0;
+            }
+
+            .content {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+
+
+        /*** Navbar ***/
+        .sidebar .navbar .navbar-nav .nav-link {
+            padding: 8px 22px;
+            color: var(--dark);
+            font-weight: 700;
+            border-left: 5px solid var(--light);
+            outline: none;
+        }
+
+        .sidebar .navbar .navbar-nav .nav-link:hover,
+        .sidebar .navbar .navbar-nav .nav-link.active {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body background="{% static 'images01/img_24.png' %}">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://127.0.0.1:8000/home/"><span class="glyphicon glyphicon-home"></span> E-Vehicle</a></li>
+            <li><a href="http://127.0.0.1:8000/daily_report/"><span class="glyphicon glyphicon-king"></span>Manager Dashboard</a></li>
+            <li><a href="http://127.0.0.1:8000/contact_us/"><span class="glyphicon glyphicon-envelope"></span>Contact US</a></li>
+            <li><a href="/manager_logout/">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+  <h1>List of Employees!</h1>
+  <div>
+    <button style="padding: 10px 25px; background-color:  #73bae6; color: white; border: none; border-radius: 10px;" ><a href="http://127.0.0.1:8000/daily_report/" style="color:white;">Back</a></button>
+    <button style="padding: 10px 25px; background-color:  #73bae6; color: white; border: none; border-radius: 10px;" ><a href="http://127.0.0.1:8000/employee_download/" style="color: white;">Download Report</a></button>
+  </div>
+</div>
+
+<div>
+  <div class="container">
+      <div style="margin-bottom: 10px">
+      </div>
+      <div class="bs-example" data-example-id="panel-without-body-with-table">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                  List
+              </div>
+
+              <table class="table table-bordered">
+                <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Job</th>
+                </tr>
+                {% block content %}
+                  {% for x in data %}
+                    {% if x.job == "operator" %}
+                      <tr>
+                          <td>{{x.name}}</td>
+                          <td>{{x.address}}</td>
+                          <td>{{x.job}}</td>
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+                {% endblock content %}
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- <footer class="bg-light text-lg-start">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-dark" href="https://Evehicles.com/">Evehicles.com</a>
+  </div>
+</footer> -->
+
+</body>
+</html>

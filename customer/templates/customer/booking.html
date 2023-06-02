@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.min.css' %}">
+    <style>
+      .navbar {
+          border-radius: 0;
+          }
+
+    </style>
+</head>
+<body background="{% static 'images01/img_24.png' %}">
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Get Your Estimated Amount by selecting the below informations: </h3>
+    </div>
+    <div class="panel-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Vehicle_type</label>
+                <select name=vehicle_type>
+                    <option>please select</option>
+                    <option>Car</option>
+                    <option>Bike</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Pickup Location</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">
+                      <select name=pick_loc_id>
+                          <option>please select</option>
+                          {% for loc in loc_List1 %}
+                              <option>{{ loc.name }}</option>
+                          {% endfor %}
+                      </select>
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Costhr</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">£15 Per Hour</p>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Duration(In Hours)</label>
+                <!--         <div class="col-sm-10">-->
+                <select name= duration>
+                    <option>please select</option>
+                    <option>0.5h</option>
+                    <option>1h</option>
+                    <option>1.5h</option>
+                    <option>2h</option>
+                    <option>2.5h</option>
+                    <option>3h</option>
+                    <option>3.5h</option>
+                    <option>4h</option>
+                    <option>4.5h</option>
+                    <option>5h</option>
+                    <option>5.5h</option>
+                    <option>6h</option>
+                    <option>6.5h</option>
+                    <option>7h</option>
+                    <option>7.5h</option>
+                    <option>8h</option>
+                    <option>8.5h</option>
+                    <option>9h</option>
+                    <option>9.5h</option>
+                    <option>10h</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Return Location</label>
+                <select name=drop_loc_id>
+                    <option>please select</option>
+                    {% for loc in loc_List1 %}
+                        <option>{{ loc.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <div>
+                  submit
+                    <a href="http://127.0.0.1:8000/booking_second/" class="btn btn-primary btn-lg active" role="button">Confirm
+                        & Calucate Cost</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="{% static 'https://code.jquery.com/jquery-3.6.1.min.js' %}"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'plugins/bootstrap-3.4.1-dist/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

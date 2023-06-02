@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style media="screen">
+      body, html {
+        height: 100%;
+        margin: 0;
+      }
+      form{
+        color: black;
+      }
+        #intro {
+          background-image: url("https://www.bmw.in/content/dam/bmw/marketIN/bmw_in/all-models/x-series/x7/X7DarkShadow/X3-1680x756_05.jpg/jcr:content/renditions/cq5dam.resized.img.1680.large.time1642656232136.jpg");
+          height: 100vh;
+        }
+        @media (min-width: 992px) {
+          #intro {
+            margin-top: -58.59px;
+          }
+        }
+
+      .bg {
+        background-image: url("/Users/bansal/Downloads/EVS/customer/templates/customer/bg.jpg");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      </style>
+    <title>User Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color:powderblue;" >
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://127.0.0.1:8000/home/"><span class="glyphicon glyphicon-home"></span> E-Vehicle</a></li>
+              <li><a href="http://127.0.0.1:8000/user_login/"><span class="glyphicon glyphicon-log-in"></span>User Book Vehicle</a></li>
+              <li><a href="http://127.0.0.1:8000/corpuser_login/"><span class="glyphicon glyphicon-globe"></span>Corp Book Vehicle</a></li>
+            <li><a href="http://127.0.0.1:8000/contact_us/"><span class="glyphicon glyphicon-envelope"></span>Contact US</a></li>
+            <li><a href="/logout/">Logout</a></li>
+          </ul>
+
+    </nav>
+    <div id="intro" class="bg-image shadow-2-strong">
+      <div class="container">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.2); color:white;">
+          <br>
+          <br>
+    <div class="bg">
+    <div style="margin: 5% 35%;" >
+      <h1>{{ request.session.name }}</h1>
+      <h4>Balance: {{ user_id1.wallet }}</h4>
+        <h1>Payment Gateway </h1>
+        <form class="payment" action="/confirmation" method="post">
+          <div class="container">
+
+                  <div class="form-group">
+                      <label style="color: white;" class="col-sm-2 control-label" for="card">Card Number: </label>
+                      <input type="number" min="1000000000000000" id="id_username" name="card" placeholder="Card Number" color:black required />
+                    </div>
+                  <div class="form-group">
+                      <label style="color: white; " class="col-sm-2 control-label" for="month">Expiry Month:</label>
+                      <input style="width:160px" type="number" min="1" max="12" id="month" name="month" placeholder="Month" autofocus required />
+                            </div>
+                  <div class="form-group">
+                      <label style="color: white;" class="col-sm-2 control-label" for="year">Expiry Year：</label>
+                      <input type="number" min="2022" id="year" name="year" placeholder="Year" autofocus required />
+                            </div>
+                  <div class="form-group">
+                      <label style="color: white;" class="col-sm-2 control-label" for="csv">CVV：</label>
+                      <input type="number" min="100" id="cvv" name="cvv" placeholder="cvv" autofocus required />
+                            </div>
+                    <div class="form-group">
+                      <label style="color: white;" class="col-sm-2 control-label" for="amount">Amount：</label>
+                      <input type="number" min="50" id="amount" name="amount" value=50 autofocus required />
+                            </div>
+                  <div class="form-group">
+                  <input type="submit" style="padding: 10px 25px; background-color:  #73bae6; color: white; border: none; border-radius: 10px;" value="Confirm">
+                  </div>
+        </form>
+        <br>
+        <br>
+
+    <div class="container d-flex align-items-center justify-content-center text-center h-100">
+      <div class="text-white">
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    <footer class="bg-light text-lg-start">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a class="text-dark" href="https://Evehicles.com/">Evehicles.com</a>
+      </div>
+    </footer>
+  </body>
+</html>

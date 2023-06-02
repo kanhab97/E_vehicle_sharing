@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+
+    <style media="screen">
+      body {
+         margin: 0;
+      }
+      img {
+         width: 100%;
+         height: 100%;
+      }
+      .left {
+          float: left;
+      }
+      .logou {
+         text-align: right;
+      }
+      .container-fluid {
+         margin-right: auto;
+         margin-left: auto;
+         line-height: 40px;
+      }
+      .navbar-header a{
+         opacity: 0.7;
+      }
+      .navbar-header a:hover{
+          opacity: 1;
+      }
+      .container {
+         width: 1128px;
+         margin: 0 auto;
+         margin-right: auto;
+         margin-left: auto;
+      }
+      .sub-header .ht{
+          height: 80px;
+      }
+      .sub-header .logo{
+          width: 234px;
+          float: left;
+      }
+      .sub-header .logo a{
+          margin-top: 10px;
+          display: inline-block
+      }
+      .sub-header .logo a img{
+          height: 60px;
+          width: 60px;
+      }
+      .sub-header .menu-list {
+          float: left;
+          line-height: 80px;
+      }
+      .sub-header .menu-list a{
+          display: inline-block;
+          padding: 0 10px;
+          color: #333;
+          font-size: 20px;
+          text-decoration: none;
+      }
+      .sub-header .menu-list a:hover{
+          color:#ff6700;
+      }
+      .navbar-nav navbar-right a:hover{
+         color:#ff6700;
+      }
+      .slider .sd-img{
+          width: 122+px;
+          height: 460px;
+      }
+       .news{
+          margin-top: 9px;
+      }
+      .news .channel{
+          width: 234px;
+          height: 170px;
+          padding: 3px;
+          background-color: #5f5750;
+
+      }
+      .news .channel .item{
+          height: 82px;
+          width: 76px;
+          float: left;
+          text-align: center;
+      }
+      .news .list-item{
+          width: 299px;
+          height: 170px;
+      }
+      .news .channel .item a{
+          display: inline-block;
+          font-size: 12px;
+          padding-top: 18px;
+          color: #fff;
+          text-decoration: none;
+          opacity: 0.7;
+          text-align: center;
+      }
+      .news .channel .item a:hover{
+          opacity: 1;
+      }
+      .news .channel .item img{
+          height: 24px;
+          width: 24px;
+          display: block;
+          margin: 0 auto 4px;
+      }
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body background="{% static 'images01/img_12.jpg' %} " style="background-position: center; background-attachment: fixed;">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://127.0.0.1:8000/home/"><span class="glyphicon glyphicon-home"></span> E-Vehicle</a></li>
+            <li><a href="http://127.0.0.1:8000/user_register/"><span class="glyphicon glyphicon-user"></span>Normal Sign Up</a></li>
+            <li><a href="http://127.0.0.1:8000/user_login/"><span class="glyphicon glyphicon-log-in"></span>Normal User Login</a></li>
+            <li><a href="http://127.0.0.1:8000/corpuser_register/"><span class="glyphicon glyphicon-briefcase"></span>Corporate  Sign Up</a></li>
+            <li><a href="http://127.0.0.1:8000/corpuser_login/"><span class="glyphicon glyphicon-globe"></span>Corporate Login</a></li>
+            <li><a href="http://127.0.0.1:8000/operator_login/"><span class="glyphicon glyphicon-pushpin"></span>Operator Login</a></li>
+            <li><a href="http://127.0.0.1:8000/manager_login/"><span class="glyphicon glyphicon-king"></span>Manager Login</a></li>
+            <li><a href="http://127.0.0.1:8000/contact_us/"><span class="glyphicon glyphicon-envelope"></span>Contact US</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="intro" class="bg-image shadow-2-strong" >
+        <div class="container" >
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.2); color:white ; border-radius: 10px;">
+            <br>
+            <br>
+            <h1>&emsp; Welcome to E-vehicle Support</h1>
+            <p style="font-size: large">&emsp;&emsp;&emsp; Your best destination to rent an E-Vehicle!</p>
+            <p style="font-size: large">&emsp; &emsp;&emsp;Choose from our fleet of E-Bikes and E-Cars now available at multiple locations in Glasgow!</p>
+            <br><br>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br><br>
+      <br><br>
+      <div class="container d-flex  h-100 bg-image shadow-2-strong">
+        <div class="text-white" style=" background-color: rgba(0, 0, 0, 0.2); color:white ; font-size: large; width: 400px; border-radius: 10px;">
+            <br>
+            <p> &emsp; We are available at the following Locations:</p>
+            <ul>
+                <li>Hillhead</li>
+                <li>Buchanan</li>
+                <li>Paisley</li>
+                <li>Cowcaddens</li>
+                <li>Clyde</li>
+            </ul>
+            <br>
+        </div>
+      </div>
+    </div>
+  </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer class="bg-light text-lg-start">
+        <div class="text-center p-3" style="background-color: rgba(255, 255, 255, 0.636); position: fixed;bottom: 0px;width: 100%;">
+          © 2022 Copyright:
+          <a class="text-dark" href="https://Evehicles.com/">Evehicles.com</a>
+        </div>
+    </footer>
+</body>
+</html>

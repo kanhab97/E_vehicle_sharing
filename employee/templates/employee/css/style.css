@@ -1,0 +1,118 @@
+/********** Template CSS **********/
+:root {
+    --primary: #5CC0FF;
+    --light: #F5F8FA;
+    --dark: #14161D;
+}
+
+/*** Layout ***/
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--light);
+    z-index: 999;
+    transition: 0.5s;
+    box-shadow: 0 0 25px 0 black;
+}
+
+.content {
+    margin-left: 250px;
+    min-height: 100vh;
+    background: #FFFFFF;
+}
+
+@media (min-width: 992px) {
+    .sidebar {
+        margin-left: 0;
+    }
+
+    .sidebar.open {
+        margin-left: -250px;
+    }
+
+    .content {
+        width: calc(100% - 250px);
+    }
+
+    .content.open {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        margin-left: -250px;
+    }
+
+    .sidebar.open {
+        margin-left: 0;
+    }
+
+    .content {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+
+/*** Navbar ***/
+.sidebar .navbar .navbar-nav .nav-link {
+    padding: 8px 22px;
+    color: var(--dark);
+    font-weight: 700;
+    border-left: 5px solid var(--light);
+    outline: none;
+}
+
+.sidebar .navbar .navbar-nav .nav-link:hover,
+.sidebar .navbar .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: var(--light);
+  color: var(--dark);
+  padding: 10px 15px;
+  border: none;
+}
+
+.repairbtn {
+  position: fixed;
+  right: 125px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
+  padding: 15px 25px;
+  border: none;
+}
+
+.rechargebtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
+  padding: 15px 25px;
+  border: none;
+}
+
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+@media (max-width: 575.98px) {
+    .content .navbar .navbar-nav .nav-link {
+        margin-left: 15px;
+    }
+}
+
+

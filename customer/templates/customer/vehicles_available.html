@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Vehicles availablity</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.min.css' %}">
+    <style>
+      .navbar {
+          border-radius: 0;
+          }
+
+    </style>
+</head>
+
+<body background="{% static 'images01/img_24.png' %}">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://127.0.0.1:8000/home/"><span class="glyphicon glyphicon-home"></span> E-Vehicle</a></li>
+        <li><a href="http://127.0.0.1:8000/user_login/"><span class="glyphicon glyphicon-log-in"></span>Book Vehicle</a></li>
+        <li><a href="http://127.0.0.1:8000/contact_us/"><span class="glyphicon glyphicon-envelope"></span>Contact US</a></li>
+        <li><a href="/paym/">Wallet Recharge</a></li>
+        <li><a href="/logout/">Logout</a></li>
+      </ul>
+
+  </nav>
+
+</div>
+<div class="container">
+<h1>{{ request.session.name }},  Welcome back！</h1>
+</div>
+<div>
+    <div class="container">
+        <div style="margin-bottom: 10px">
+            <!--       <a class = "btn btn-success">Choose The E-Car You Like</a>-->
+        </div>
+        <div class="bs-example" data-example-id="panel-without-body-with-table">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    locations' List
+                </div>
+
+                <!-- Table -->
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Location</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Pin Code</th>
+                        <th>cars Availablity</th>
+                        <th>Bikes Availablity</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for loc in loc_List %}
+                          <tr>
+                          <td>{{ loc.loc_id }}</td>
+                          <td>{{ loc.name }}</td>
+                          <td>{{ loc.address }}</td>
+                          <td>{{ loc.pincode }}</td>
+                          <td>{{ loc.cars_available }}</td>
+                          <td>{{ loc.bikes_available }}</td>
+
+                          </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Get Your Estimated Amount by selecting the below informations: </h3>
+                <h4>E-Bikes @£15 Per Hour</h4>
+                <h4>E-cars @£25 Per Hour</h4>
+            </div>
+            <div class="panel-body">
+                <form method="post" action="/book_vehicle">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Vehicle type</label>
+                        <select name=vehicle_type required>
+                            <option value="">please select</option>
+                            <option value="0">E-Car</option>
+                            <option value="1">E-Bike</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Pickup Location</label>
+                              <select name=pick_loc_id required>
+                                  <option value="">please select</option>
+                                  {% for loc in loc_List %}
+                                      <option value="{{ loc.loc_id }}">{{ loc.name }}</option>
+                                  {% endfor %}
+                              </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Duration(In Hours)</label>
+                        <select name= duration required>
+                            <option value="">please select</option>
+                            <option>0.5</option>
+                            <option>1</option>
+                            <option>1.5</option>
+                            <option>2</option>
+                            <option>2.5</option>
+                            <option>3</option>
+                            <option>3.5</option>
+                            <option>4</option>
+                            <option>4.5</option>
+                            <option>5</option>
+                            <option>5.5</option>
+                            <option>6</option>
+                            <option>6.5</option>
+                            <option>7</option>
+                            <option>7.5</option>
+                            <option>8</option>
+                            <option>8.5</option>
+                            <option>9</option>
+                            <option>9.5</option>
+                            <option>10</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Return Location</label>
+                        <select name=drop_loc_id required>
+                            <option value="">please select</option>
+                            {% for loc in loc_List %}
+                                <option value="{{ loc.loc_id }}">{{ loc.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <div>
+                          <input type="submit" style="padding: 10px 25px; background-color:  #73bae6; color: white; border: none; border-radius: 10px;" class="btn btn-primary btn-lg active" value="Confirm & Calucate Cost" name="mybtn1">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'https://code.jquery.com/jquery-3.6.1.min.js' %}"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'plugins/bootstrap-3.4.1-dist/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

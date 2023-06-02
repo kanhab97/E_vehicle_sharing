@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking details</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1-dist/css/bootstrap.min.css' %}">
+    <style>
+      .navbar {
+          border-radius: 0;
+          }
+
+    </style>
+</head>
+<body background="{% static 'images01/img_24.png' %}">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://127.0.0.1:8000/home/"><span class="glyphicon glyphicon-home"></span> E-Vehicle</a></li>
+          <li><a href="http://127.0.0.1:8000/user_login/"><span class="glyphicon glyphicon-log-in"></span> User Book Vehicle</a></li>
+          <li><a href="http://127.0.0.1:8000/corpuser_login/"><span class="glyphicon glyphicon-globe"></span>Corporate Book Vehicle</a></li>
+          <li><a href="http://127.0.0.1:8000/contact_us/"><span class="glyphicon glyphicon-envelope"></span>Contact US</a></li>
+          <li><a href="/paym/">Wallet Recharge</a></li>
+          <li><a href="/logout/">Logout</a></li>
+        </ul>
+
+  </nav>
+
+
+<form class="container" method="post" action="/returnVehicle">
+<h1>Booking Details</h1>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Vehicle Id(Registration Number)</h3>
+    </div>
+    <div name=vehicle_id1 id="vehicle_id1" class="panel-body">
+        {{ book_id.vehicle_id }}
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Pick Location ID</div>
+    <div class="panel-body">
+        {{ book_id.pick_location_id }}
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Return Location ID</div>
+    <div class="panel-body">
+          {{ book_id.drop_location_id }}
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Charge Required for the duration you have selected in percentage</h3>
+    </div>
+    <div class="panel-body">
+        {{ book_id.charge }}
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Cost in Pound(£)</h3>
+    </div>
+    <div class="panel-body">
+          {{ book_id.cost }}
+    </div>
+</div>
+
+<div class="form-group">
+    <h4>To Return the Vehicle please confirm the vehicle number and click on the Return Button.</h4>
+    <label  class="col-sm-2 control-label" for="vehicle_id">Confirm vehicle id</label>
+    <input type="text" id="vehicle_id"  name="vehicle_id"  required >
+</div>
+
+  <div class="form-group">
+        <input type="submit" style="padding: 10px 25px; background-color:  #73bae6; color: white; border: none; border-radius: 10px;" class="btn btn-primary btn-lg active" value="Return Vehicles" name="vehicle_id">
+  </div>
+</form>
+
+<form class ="container" action="/report" method="post">
+<div class="form-group">
+    <h4>To Report the Vehicle please confirm the vehicle number and the Error/Report Description and click on the Return Button.</h4>
+    <h4>You will not be charge anything for this booking</h4>
+    <label class="col-sm-2 control-label" for="repair_desc">Error Description</label>
+    <input for="repair_desc" type="text" name="repair_desc" value="" required>
+  </div>
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="vehicle_id">Confirm Vehicle ID</label>
+    <input for="vehicle_id" type="text" name="vehicle_id" id="vehicle_id" value="" required>
+<div>
+      <input type="submit" style="padding: 10px 25px; background-color:  #73bae6; color: white; border: none; border-radius: 10px;" class="btn btn-primary btn-lg active" value="Report" >
+    </div>
+  </div>
+</form>
+
+<script src="{% static 'https://code.jquery.com/jquery-3.6.1.min.js' %}"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'plugins/bootstrap-3.4.1-dist/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

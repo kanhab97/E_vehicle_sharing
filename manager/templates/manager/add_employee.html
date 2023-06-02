@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style media="screen">
+      body, html {
+        height: 100%;
+        margin: 0;
+      }
+      form{
+        color: black;
+      }
+        #intro {
+          background-image: url("https://www.bmw.in/content/dam/bmw/marketIN/bmw_in/all-models/x-series/x7/X7DarkShadow/X3-1680x756_05.jpg/jcr:content/renditions/cq5dam.resized.img.1680.large.time1642656232136.jpg");
+          height: 100vh;
+        }
+        @media (min-width: 992px) {
+          #intro {
+            margin-top: -58.59px;
+          }
+        }
+
+      .bg {
+        background-image: url("/Users/bansal/Downloads/EVS/customer/templates/customer/bg.jpg");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      </style>
+    <title>Add Employees</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body >
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://127.0.0.1:8000/home/"><span class="glyphicon glyphicon-home"></span> E-Vehicle</a></li>
+            <li><a href="http://127.0.0.1:8000/daily_report/"><span class="glyphicon glyphicon-king"></span> Manager Dashboard</a></li>
+            <li><a href="http://127.0.0.1:8000/contact_us/"><span class="glyphicon glyphicon-envelope"></span> Contact US</a></li>
+            <li><a href="http://127.0.0.1:8000/add_vehicle/"><span class="glyphicon glyphicon-road"></span> Add New Vehicle</a></li>
+            <li><a href="http://127.0.0.1:8000/add_employee/"><span class="glyphicon glyphicon-user"></span> Add New Employee</a></li>
+            <li><a href="http://127.0.0.1:8000/manager_logout/">Logout</a></li>
+        </ul>
+
+
+    </nav>
+    <div id="intro" class="bg-image shadow-2-strong">
+      <div class="container">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.2); color:white;">
+          <br>
+          <br>
+    <div class="bg">
+    <div class="container" style="margin: 5% 35%;" >
+        <h1>Add Employees to the organisation</h1>
+        <h2>Create their account </h2>
+        <br>
+        <br>
+
+
+        </h3>
+        <form action="/add_employee/" method="post">
+            {% if message %}
+                <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+            {% csrf_token %}
+
+              <div class="form-group">
+                <label style="color: white;" class="col-sm-2 control-label" for="name">EMP Full Name: </label>
+                <input type="text" id="name" name="name" placeholder="Full Name" color:black required />
+              </div>
+                <div class="form-group">
+                <label style="color: white;" class="col-sm-2 control-label" for="phone_no">Phone number：</label>
+                <input type="text" id="phone_no" name="phone_no" placeholder="Phone number" autofocus required />
+              </div>
+
+                  <div class="form-group">
+                <label style="color: white;" class="col-sm-2 control-label" for="address">Address：</label>
+                <input type="text" id="address" name="address" placeholder="Address" autofocus required />
+              </div>
+
+            <div class="form-group">
+                <label style="color: white;" class="col-sm-2 control-label" for="emp_id">Employee ID：</label>
+                <input type="text" id="emp_id" name="emp_id" placeholder="Email_id" autofocus required />
+              </div>
+
+  <div class="form-group">
+                <label style="color: white;" class="col-sm-2 control-label" for="dob">Date of Birth：</label>
+                <input type="date" id="dob" name="dob" placeholder="Date of Birth" autofocus required />
+              </div>
+
+  <div class="form-group">
+                <label style="color: white;" class="col-sm-2 control-label" for="password">Password：</label>
+                <input type="password" id="password" placeholder="Password" name="password" required >
+              </div>
+  <div class="form-group">
+                <label style="color: white;" class="col-sm-2 control-label" for="confirmPassword">Confirm Pwd:</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" required >
+                </div>
+<div class="form-group">
+                <label style="color: white;" class="col-sm-2 control-label" for="job">Employee Type:</label>
+                <input type="text" id="job" placeholder="Employee Type" name="job" required >
+                </div>
+  <div class="form-group">
+            <input type="submit" style="padding: 10px 25px; background-color:  #73bae6; color: white; border: none; border-radius: 10px;" value="Add Employee">
+            </div>
+        </form>
+      </div>
+    <div class="container d-flex align-items-center justify-content-center text-center h-100">
+      <div class="text-white">
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    <footer class="bg-light text-lg-start">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a class="text-dark" href="https://Evehicles.com/">Evehicles.com</a>
+      </div>
+    </footer>
+</body>
+</html>

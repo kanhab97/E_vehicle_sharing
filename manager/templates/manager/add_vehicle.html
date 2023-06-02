@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style media="screen">
+      body, html {
+        height: 100%;
+        margin: 0;
+      }
+      form{
+        color: black;
+      }
+        #intro {
+          background-image: url("https://www.bmw.in/content/dam/bmw/marketIN/bmw_in/all-models/x-series/x7/X7DarkShadow/X3-1680x756_05.jpg/jcr:content/renditions/cq5dam.resized.img.1680.large.time1642656232136.jpg");
+          height: 100vh;
+        }
+        @media (min-width: 992px) {
+          #intro {
+            margin-top: -58.59px;
+          }
+        }
+
+      .bg {
+        background-image: url("/Users/bansal/Downloads/EVS/customer/templates/customer/bg.jpg");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      </style>
+    <title>Add Employees</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body >
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://127.0.0.1:8000/home/"><span class="glyphicon glyphicon-home"></span> E-Vehicle</a></li>
+            <li><a href="http://127.0.0.1:8000/daily_report/"><span class="glyphicon glyphicon-king"></span> Manager Dashboard</a></li>
+            <li><a href="http://127.0.0.1:8000/contact_us/"><span class="glyphicon glyphicon-envelope"></span> Contact US</a></li>
+            <li><a href="http://127.0.0.1:8000/add_vehicle/"><span class="glyphicon glyphicon-road"></span> Add New Vehicle</a></li>
+            <li><a href="http://127.0.0.1:8000/add_employee/"><span class="glyphicon glyphicon-user"></span> Add New Employee</a></li>
+            <li><a href="http://127.0.0.1:8000/manager_logout/">Logout</a></li>
+        </ul>
+
+
+    </nav>
+    <div id="intro" class="bg-image shadow-2-strong">
+      <div class="container">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.2); color:white;">
+          <br>
+          <br>
+    <div class="bg">
+    <div class="container" style="margin: 5% 35%;" >
+        <h1>Add New Vehicle</h1>
+        <br>
+        <br>
+
+
+        </h3>
+        <form action="/add_vehicle/" method="post">
+            {% if message %}
+                <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+            {% csrf_token %}
+
+              <div class="form-group">
+                <label style="color: white;" class="col-sm-2 control-label" for="vehicle_id">Vehicle Reg No: </label>
+                <input type="text" id="vehicle_id" name="vehicle_id" placeholder="Vehicle ID" color:black required />
+              </div>
+
+              <div class="form-group">
+                  <label style="color: white;" class="col-sm-2 control-label">Vehicle type</label>
+                  <select name=vehicle_type required>
+                      <option value="">please select</option>
+                      <option value="0">E-Car</option>
+                      <option value="1">E-Bike</option>
+                  </select>
+              </div>
+
+                <div class="form-group">
+                <label style="color: white;" class="col-sm-2 control-label" for="costhr">Cost Per Hour：</label>
+                <input type="number" id="costhr" name="costhr" placeholder="costhr" autofocus required />
+              </div>
+
+                  <div class="form-group">
+                <label style="color: white;" class="col-sm-2 control-label" for="charge">Charge: </label>
+                <input type="number" id="charge" name="charge" placeholder="Charge" autofocus required />
+              </div>
+
+              <div class="form-group">
+                  <label style="color: white;" class="col-sm-2 control-label">Location: </label>
+                  <select name=location required>
+                      <option value="">please select</option>
+                      <option value="l1">Hillhead</option>
+                      <option value="l2">Buchanan</option>
+                      <option value="l3">Paisley</option>
+                      <option value="l4">Clyde</option>
+                      <option value="l5">Cowcaddens</option>
+                  </select>
+              </div>
+
+  <div class="form-group">
+            <input type="submit" style="padding: 10px 25px; background-color:  #73bae6; color: white; border: none; border-radius: 10px;" value="Add Vehicle">
+            </div>
+        </form>
+      </div>
+    <div class="container d-flex align-items-center justify-content-center text-center h-100">
+      <div class="text-white">
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    <footer class="bg-light text-lg-start">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a class="text-dark" href="https://Evehicles.com/">Evehicles.com</a>
+      </div>
+    </footer>
+</body>
+</html>

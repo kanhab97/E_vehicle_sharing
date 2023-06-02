@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Move</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <style type="text/css">
+        /********** Template CSS **********/
+        :root {
+            --primary: #5CC0FF;
+            --light: #F5F8FA;
+            --dark: #14161D;
+        }
+
+        /*** Layout ***/
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 250px;
+            height: 100vh;
+            overflow-y: auto;
+            background: var(--light);
+            z-index: 999;
+            transition: 0.5s;
+            box-shadow: 0 0 25px 0 black;
+        }
+
+        .content {
+            margin-left: 250px;
+            min-height: 100vh;
+            background: #FFFFFF;
+        }
+
+        @media (min-width: 992px) {
+            .sidebar {
+                margin-left: 0;
+            }
+
+            .sidebar.open {
+                margin-left: -250px;
+            }
+
+            .content {
+                width: calc(100% - 250px);
+            }
+
+            .content.open {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .sidebar {
+                margin-left: -250px;
+            }
+
+            .sidebar.open {
+                margin-left: 0;
+            }
+
+            .content {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+
+
+        /*** Navbar ***/
+        .sidebar .navbar .navbar-nav .nav-link {
+            padding: 8px 22px;
+            color: var(--dark);
+            font-weight: 700;
+            border-left: 5px solid var(--light);
+            outline: none;
+        }
+
+        .sidebar .navbar .navbar-nav .nav-link:hover,
+        .sidebar .navbar .navbar-nav .nav-link.active {
+            color: var(--primary);
+        }
+
+        .openbtn {
+          font-size: 20px;
+          cursor: pointer;
+          background-color: var(--light);
+          color: var(--dark);
+          padding: 10px 15px;
+          border: none;
+        }
+
+        .repairbtn {
+          position: fixed;
+          right: 125px;
+          font-size: 20px;
+          cursor: pointer;
+          background-color: var(--primary);
+          color: white;
+          padding: 15px 25px;
+          border: none;
+        }
+
+        .rechargebtn {
+          font-size: 20px;
+          cursor: pointer;
+          background-color: var(--primary);
+          color: white;
+          padding: 15px 25px;
+          border: none;
+        }
+
+        #main {
+          transition: margin-left .5s; /* If you want a transition effect */
+          padding: 20px;
+        }
+
+        @media (max-width: 575.98px) {
+            .content .navbar .navbar-nav .nav-link {
+                margin-left: 15px;
+            }
+        }
+
+    </style>
+</head>
+
+<body background="{% static 'img/img_24.jpg' %}>
+    <div class="container-xxl position-relative d-flex p-0">
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light" >
+                <div class="d-flex align-items-center ms-4 mb-4" style="position:absolute; top:30px;">
+                    <div class="position-relative">
+                        <br>
+                        <img class="rounded-circle" src="{% static 'img/user.jpg' %}" alt="" style="width: 50px; height: 50px;">
+                    </div>
+                    <div class="ms-3">
+                        <br>
+                        <h6 class="mb-0">{{ request.session.name }}</h6>
+                        <span>Operator</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100" style="position:absolute; top:150px;">
+                    <a href="http://127.0.0.1:8000/operator" class="nav-item nav-link ">Dashboard</a>
+                    <a href="http://127.0.0.1:8000/repair" class="nav-item nav-link">Repair Vehicles</a>
+                    <a href="http://127.0.0.1:8000/recharge" class="nav-item nav-link">Recharge Vehicles</a>
+                    <a href="http://127.0.0.1:8000/track" class="nav-item nav-link">Track Vehicles</a>
+                    <a href="http://127.0.0.1:8000/move" class="nav-item nav-link active">Move Vehicles</a>
+                </div>
+                <button style="position:absolute; top:600px; right:80px; font-size: 30px; width: 65px; background-color: white;" class="rounded-circle openbtn sidebar-toggler flex-shrink-0 " >&times; </button>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content" >
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-light navbar-light px-4 py-0" >
+                <button class="openbtn sidebar-toggler flex-shrink-0" >&#9776; </button>
+                <h5 style="color: #0097F5;">  Move Vehicles </h5>
+                <div class="navbar-nav align-items-center ms-auto" >
+                    <a href="/logoutop/" class="navbar">Log Out</a>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+            <div class="container-fluid pt-4 px-4" style="background:url('/static/img/img_24.png');">
+                <form method="post" action="./">
+                  {% csrf_token %}
+                <div class="row bg-light rounded align-items-center justify-content-center mx-0">
+                    <div class=" text-center">
+                        <div class="row g-4">
+                            <div >
+                                <div class="bg-light rounded h-100 p-7" style="overflow: auto;">
+                                    <br>
+                                    <h4 class="mb-4" style="color: #0097F5;">Move Vehicle </h4>
+                                    <br><br>
+                                    <table class="table" style="text-align:left ;">
+                                        {{ form_list.as_table }}
+                                    </table>
+
+                                    <!-- {{ form_list }} -->
+                                    <!-- {{ to_list }}
+                                    {{ vehicle_type_to_move }}
+                                    {{ number_of_vehicles_to_move }} -->
+                                </div>
+                                <br>
+                                <input type="submit" class="repairbtn rounded flex-shrink-0 position-relative" value="Move Vehicle"> </input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+                <br><br><br><br><br><br>
+                <div class="row bg-light rounded align-items-center justify-content-center mx-0">
+                    <div class=" text-center">
+                        <div class="row g-4">
+                            <div >
+                                <div class="bg-light rounded h-100 p-7" style="overflow: auto;">
+                                    <br>
+                                    <h4 class="mb-4">Vehicles at Locations </h4>
+                                    <table class="table">
+                                        <thead>
+                                            <tr style="color: #5CC0FF;">
+                                                <th scope="col">Location</th>
+                                                <th scope="col">Pincode</th>
+                                                <th scope="col">No of Cars</th>
+                                                <th scope="col">No of Bikes </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for loc in loc_List %}
+                                            <tr>
+                                                <td scope="row"> {{ loc.name }}</td>
+                                                <td>{{ loc.pincode }}  </td>
+                                                <td>{{ loc.cars_available}}                    </td>
+                                                <td>{{ loc.bikes_available}}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </div>
+    <!-- Content End -->
+    <footer class="bg-light text-lg-start">
+        <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.1);">
+            © 2022 Copyright:
+            <a class="text-dark" href="https://Evehicles.com/">Evehicles.com</a>
+         </div>
+    </footer>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}">  </script>
+</body>
+
+</html>
